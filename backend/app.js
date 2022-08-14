@@ -1,19 +1,19 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { errors, celebrate, Joi } = require('celebrate');
 const cors = require('cors');
 const { regexp } = require('./regexp/regexp');
-// const { NOT_FOUND } = require('./errors');
 const { login, createUser } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 // импортируем роутеры
 const routUsers = require('./routes/users');
 const routcards = require('./routes/cards');
+
 // Слушаем 3000 порт
 const { PORT = 3000 } = process.env;
-
 const options = {
   origin: [
     'http://localhost:3000',

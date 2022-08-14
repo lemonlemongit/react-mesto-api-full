@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
 const Unauthorized = require('../errors/error401');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 module.exports = (req, res, next) => {
   // достаём авторизационный заголовок
   const { authorization } = req.headers;
@@ -15,7 +17,7 @@ module.exports = (req, res, next) => {
 
   try {
     // попытаемся верифицировать токен 'Bearer ....'
-    payload = jwt.verify(token, 'some-secret-key');
+    payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key');
   } catch (err) {
     // отправим ошибку, если не получилось
     throw new Unauthorized('Необходима авторизация');
