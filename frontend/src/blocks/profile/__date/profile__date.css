@@ -1,0 +1,12 @@
+﻿.profile__date {
+  display: flex;
+  margin-top: 40px;
+  position: relative;
+}
+
+@media screen and (max-width:634px) {
+.profile__date {
+  flex-direction: column;
+  margin: 38px auto 0;
+}
+}

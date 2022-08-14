@@ -1,0 +1,13 @@
+.zoom__close {
+  max-width: 32px;
+  position: absolute;
+  top: -26px;
+  right: -26px;
+  cursor: pointer;
+}
+
+@media screen and (max-width:500px) {
+.zoom__close { 
+  max-width: 20px;
+}
+}

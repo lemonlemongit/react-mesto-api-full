@@ -1,0 +1,32 @@
+﻿.profile__avatar {
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 120px;
+  padding: 0;
+  border-radius: 50%;
+  border: 0;
+  transition-duration:  0.8s; 
+}
+
+.profile__avatar:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.6);
+  background-image: url('../../../images/profile/profile-vector.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  transition-property:  background-image, background-color;
+  transition-duration: 0s 0.8s;
+  opacity: 1;
+}
+
+@media screen and (max-width:634px) {
+.profile__avatar {
+  display: flex;
+  margin: 0 auto;
+  bottom: 0;
+  right: 0;
+}
+}

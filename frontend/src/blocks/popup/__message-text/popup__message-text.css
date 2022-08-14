@@ -1,0 +1,9 @@
+﻿.popup__message-text {
+  margin: 0 auto 60px;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  max-width: 358px;
+}

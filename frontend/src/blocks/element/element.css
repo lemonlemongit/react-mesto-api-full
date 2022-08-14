@@ -1,0 +1,8 @@
+﻿.element {
+  max-width: 282px;
+  height: 361px;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  position: relative;
+}

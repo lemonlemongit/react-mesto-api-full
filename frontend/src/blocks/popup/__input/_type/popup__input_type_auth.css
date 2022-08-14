@@ -1,0 +1,11 @@
+﻿.popup__input_type_auth {
+  background: rgba( 0,0,0,.6);
+  border: none;
+  border-bottom: 2px solid #CCCCCC;
+  color: white;
+}
+
+.popup__input_type_auth:focus {
+  border-top:none!important;
+  outline:none!important
+}

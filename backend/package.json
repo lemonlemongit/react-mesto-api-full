@@ -1,0 +1,40 @@
+{
+  "name": "express-mesto-gha",
+  "version": "1.0.0",
+  "description": "# Проект Mesto фронтенд + бэкенд",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "lint": "npx eslint .",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lemonlemongit/express-mesto-gha.git"
+  },
+  "keywords": [],
+  "author": "Pavel Tsveroshvili lemonlemongit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lemonlemongit/express-mesto-gha/issues"
+  },
+  "homepage": "https://github.com/lemonlemongit/express-mesto-gha#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "celebrate": "^15.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "express-winston": "^4.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.8",
+    "validator": "^13.7.0",
+    "winston": "^3.8.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.3",
+    "nodemon": "^2.0.19"
+  }
+}

@@ -1,0 +1,13 @@
+﻿.popup__container_type_auth {
+  background-color: black;
+  color: white;
+  visibility: visible;
+  margin: 0 auto;
+  padding-bottom: 250px;
+}
+
+@media screen and (max-width:500px) {
+  .popup__container_type_auth {
+    padding-bottom: 80px;
+  }
+  }
