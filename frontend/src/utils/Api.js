@@ -100,4 +100,5 @@ export const api = new Api({
     "Content-Type": "application/json",
     'Accept': 'application/json',
   },
+  credentials: 'include',
 });
