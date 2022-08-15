@@ -48,7 +48,7 @@ class ApiAuthorize {
 }
 
 export const apiAuthorize = new ApiAuthorize({
-  baseUrl: `${window.location.protocol}${process.env.REACT_APP_API_URL || '//localhost:4000'}`,
+  baseUrl: `${window.location.protocol}${process.env.REACT_APP_API_URL}`,
   headers: {
     "Content-Type": "application/json",
   },
