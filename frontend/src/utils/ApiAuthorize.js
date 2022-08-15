@@ -53,6 +53,6 @@ export const apiAuthorize = new ApiAuthorize({
   headers: {
     "Content-Type": "application/json",
     'Access-Control-Request-Headers': 'http://localhost:3000',
-    'Access-Control-Request-Headers': 'https://api.domainname.lemon.nomoredomains.sbs',
+    'Access-Control-Request-Headers': 'https://domainname.lemon.nomoredomains.sbs',
   },
 });
