@@ -16,7 +16,6 @@ class ApiAuthorize {
     return fetch(`${this._baseUrl}/signin`, {
       method: "POST",
       headers: this._headers,
-      credentials: 'include',
       body: JSON.stringify({
         password: password,
         email: email,
@@ -28,7 +27,6 @@ class ApiAuthorize {
     return fetch(`${this._baseUrl}/signup`, {
       method: "POST",
       headers: this._headers,
-      credentials: 'include',
       body: JSON.stringify({
         password: password,
         email: email,
@@ -48,11 +46,8 @@ class ApiAuthorize {
 }
 
 export const apiAuthorize = new ApiAuthorize({
-  baseUrl: `${window.location.protocol}${process.env.REACT_APP_API_URL || '//localhost:4000'}`,
-
+  baseUrl: "https://auth.nomoreparties.co",
   headers: {
     "Content-Type": "application/json",
-    'Access-Control-Request-Headers': 'http://localhost:3000',
-    'Access-Control-Request-Headers': 'https://domainname.lemon.nomoredomains.sbs',
   },
 });

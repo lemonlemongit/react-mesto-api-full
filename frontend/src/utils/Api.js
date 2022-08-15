@@ -93,14 +93,9 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: `${window.location.protocol}${process.env.REACT_APP_API_URL || '//localhost:4000'}`,
-  // "https://mesto.nomoreparties.co/v1/cohort-40",
+  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-40",
   headers: {
-    // authorization: "84100497-63df-4058-816a-2b7aa5f5e9d4",
+    authorization: "84100497-63df-4058-816a-2b7aa5f5e9d4",
     "Content-Type": "application/json",
-    'Accept': 'application/json',
-    'Access-Control-Request-Headers': 'http://localhost:3000',
-    'Access-Control-Request-Headers': 'https://api.domainname.lemon.nomoredomains.sbs',
   },
-  credentials: 'include',
 });
