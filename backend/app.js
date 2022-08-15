@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { errors, celebrate, Joi } = require('celebrate');
-const cors = require('cors');
+// const cors = require('cors');
 const { regexp } = require('./regexp/regexp');
 const { login, createUser } = require('./controllers/users');
 const auth = require('./middlewares/auth');
@@ -13,21 +13,28 @@ const routUsers = require('./routes/users');
 const routcards = require('./routes/cards');
 
 // Слушаем порт
-const { PORT = 3000 } = process.env;
-const options = {
-  origin: [
-    'http://localhost:3000',
-    'https://github.com/lemonlemongit',
-    'http://domainname.lemon.nomoredomains.sbs/',
-    'http://api.domainname.lemon.nomoredomains.sbs/',
-    'https://domainname.lemon.nomoredomains.sbs/',
-    'https://api.domainname.lemon.nomoredomains.sbs/',
-  ],
-  credentials: true,
-};
-
+const { PORT = 4000 } = process.env;
+//const options = {
+//  origin: [
+//   'http://localhost:4000',
+//   'https://github.com/lemonlemongit',
+//  'http://domainname.lemon.nomoredomains.sbs/',
+//   'http://api.domainname.lemon.nomoredomains.sbs/',
+//   'https://domainname.lemon.nomoredomains.sbs/',
+//  'https://api.domainname.lemon.nomoredomains.sbs/',
+//],
+// credentials: true,
+//};
 const app = express();
-app.all('*', cors(options));
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
+  next();
+});
+
+//app.all('*', cors(options));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
