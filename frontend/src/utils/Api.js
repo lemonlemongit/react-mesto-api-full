@@ -98,5 +98,6 @@ export const api = new Api({
   headers: {
     // authorization: "84100497-63df-4058-816a-2b7aa5f5e9d4",
     "Content-Type": "application/json",
+    'Accept': 'application/json',
   },
 });
