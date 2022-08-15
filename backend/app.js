@@ -1,4 +1,4 @@
-require('dotenv').config();
+﻿require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -12,8 +12,8 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const routUsers = require('./routes/users');
 const routcards = require('./routes/cards');
 
-// Слушаем 3000 порт
-const { PORT = 3000 } = process.env;
+// Слушаем порт
+const { PORT = 4000 } = process.env;
 const options = {
   origin: [
     'http://localhost:3000',

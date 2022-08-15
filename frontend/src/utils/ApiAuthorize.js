@@ -46,7 +46,7 @@ class ApiAuthorize {
 }
 
 export const apiAuthorize = new ApiAuthorize({
-  baseUrl: "https://auth.nomoreparties.co",
+  baseUrl: `${window.location.protocol}${process.env.REACT_APP_API_URL || '//localhost:4000'}`,
   headers: {
     "Content-Type": "application/json",
   },
