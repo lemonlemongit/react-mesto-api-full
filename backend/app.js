@@ -18,10 +18,10 @@ const options = {
   origin: [
     'http://localhost:3000',
     'https://github.com/lemonlemongit',
-    'http://domainname.lemon.nomoredomains.sbs/',
-    'http://api.domainname.lemon.nomoredomains.sbs/',
-    'https://domainname.lemon.nomoredomains.sbs/',
-    'https://api.domainname.lemon.nomoredomains.sbs/',
+    'http://domainname.lemon.nomoredomains.sbs',
+    'http://api.domainname.lemon.nomoredomains.sbs',
+    'https://domainname.lemon.nomoredomains.sbs',
+    'https://api.domainname.lemon.nomoredomains.sbs',
   ],
   credentials: true,
 };
