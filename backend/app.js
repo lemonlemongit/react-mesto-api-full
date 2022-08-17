@@ -13,7 +13,7 @@ const routUsers = require('./routes/users');
 const routcards = require('./routes/cards');
 
 // Слушаем порт
-const { PORT = 3001 } = process.env;
+const { PORT = 3000 } = process.env;
 const options = {
   origin: [
     'http://localhost:3000',
