@@ -5,6 +5,7 @@ const BadRequest = require('../errors/error400');
 const ConflictingRequest = require('../errors/error409');
 const NotFound = require('../errors/error404');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
 // создаёт пользователя
 module.exports.createUser = (req, res, next) => {
   const {
@@ -112,7 +113,7 @@ module.exports.login = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign({
         _id: user._id,
-      }, 'some-secret-key', { expiresIn: '7d' });
+      }, NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key', { expiresIn: '7d' });
       res.send({ token });
     })
     .catch(next);
