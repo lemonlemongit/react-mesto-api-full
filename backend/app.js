@@ -34,7 +34,9 @@ const allowedCors = [
   'https://api.domainname.lemon.nomoredomains.sbs',
   'localhost:3000'
 ];
-app.use(function(req, res, next) {
+const app = express();
+
+app.use((req, res, next) => {
   const { origin } = req.headers; // Сохраняем источник запроса в переменную origin
   const { method } = req; // Сохраняем тип запроса (HTTP-метод) в соответствующую переменную
   const requestHeaders = req.headers['access-control-request-headers']; // сохраняем список заголовков исходного запроса
@@ -48,12 +50,12 @@ app.use(function(req, res, next) {
     // разрешаем кросс-доменные запросы любых типов (по умолчанию)
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
     res.header('Access-Control-Allow-Headers', requestHeaders);
-    return res.end();
+     res.end();
 }
   next();
 });
 
-const app = express();
+
 
 app.all('*', cors(allowedCors));
 //app.all('*', cors(options));
