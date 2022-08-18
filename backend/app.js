@@ -42,7 +42,7 @@ app.use(function(req, res, next) {
   if (allowedCors.includes(origin)) {
     // устанавливаем заголовок, который разрешает браузеру запросы с этого источника
     res.header('Access-Control-Allow-Origin', origin);
-    res.header('Access-Control-Allow-Origin', 'https://domainname.lemon.nomoredomains.sbs');
+    res.header('Access-Control-Request-Header', 'https://domainname.lemon.nomoredomains.sbs');
 }
   if (method === 'OPTIONS') {
     // разрешаем кросс-доменные запросы любых типов (по умолчанию)
