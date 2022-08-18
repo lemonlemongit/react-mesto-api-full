@@ -14,17 +14,17 @@ const routcards = require('./routes/cards');
 
 // Слушаем порт
 const { PORT = 3000 } = process.env;
-//const options = {
-  //origin: [
-   // 'http://localhost:3000',
+// const options = {
+// origin: [
+// 'http://localhost:3000',
 
-    //'http://domainname.lemon.nomoredomains.sbs/',
-    //'http://api.domainname.lemon.nomoredomains.sbs/',
-   // 'https://domainname.lemon.nomoredomains.sbs/',
-    //'https://api.domainname.lemon.nomoredomains.sbs/',
-  //],
- // credentials: true,
-//;
+// 'http://domainname.lemon.nomoredomains.sbs/',
+// 'http://api.domainname.lemon.nomoredomains.sbs/',
+// 'https://domainname.lemon.nomoredomains.sbs/',
+// 'https://api.domainname.lemon.nomoredomains.sbs/',
+// ],
+// credentials: true,
+// ;
 
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
@@ -32,7 +32,7 @@ const allowedCors = [
   'http://api.domainname.lemon.nomoredomains.sbs/',
   'https://domainname.lemon.nomoredomains.sbs',
   'https://api.domainname.lemon.nomoredomains.sbs',
-  'localhost:3000'
+  'localhost:3000',
 ];
 const app = express();
 
@@ -40,25 +40,23 @@ app.use((req, res, next) => {
   const { origin } = req.headers; // Сохраняем источник запроса в переменную origin
   const { method } = req; // Сохраняем тип запроса (HTTP-метод) в соответствующую переменную
   const requestHeaders = req.headers['access-control-request-headers']; // сохраняем список заголовков исходного запроса
-  const DEFAULT_ALLOWED_METHODS = "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS";
+  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
   if (allowedCors.includes(origin)) {
     // устанавливаем заголовок, который разрешает браузеру запросы с этого источника
     res.header('Access-Control-Allow-Origin', origin);
     res.header('Access-Control-Request-Header', 'https://domainname.lemon.nomoredomains.sbs');
-}
+  }
   if (method === 'OPTIONS') {
     // разрешаем кросс-доменные запросы любых типов (по умолчанию)
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
     res.header('Access-Control-Allow-Headers', requestHeaders);
-     res.end();
-}
+    res.end();
+  }
   next();
 });
 
-
-
 app.all('*', cors(allowedCors));
-//app.all('*', cors(options));
+// app.all('*', cors(options));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
