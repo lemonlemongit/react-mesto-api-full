@@ -51,6 +51,7 @@ app.use((req, res, next) => {
   if (method === 'OPTIONS') {
     // разрешаем кросс-доменные запросы любых типов (по умолчанию)
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
+    res.header('Access-Control-Allow-Headers', requestHeaders, origin, X-Requested-With, Content-Type, Accept );
     res.header('Access-Control-Allow-Headers', requestHeaders);
     res.header('Access-Control-Allow-Credentials', true);
     res.header('Access-Control-Allow-Origin', allowedCors);
