@@ -30,7 +30,7 @@ const { PORT = 3000 } = process.env;
 const allowedCors = [
   'http://domainname.lemon.nomoredomains.sbs/',
  // 'http://api.domainname.lemon.nomoredomains.sbs/',
-  'https://domainname.lemon.nomoredomains.sbs',
+ // 'https://domainname.lemon.nomoredomains.sbs',
  // 'https://api.domainname.lemon.nomoredomains.sbs',
  // 'localhost:3000',
 ];
