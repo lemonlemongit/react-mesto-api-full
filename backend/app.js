@@ -14,17 +14,17 @@ const routcards = require('./routes/cards');
 
 // Слушаем порт
 const { PORT = 3000 } = process.env;
- const options = {
- origin: [
- 'http://localhost:3000',
+ // const options = {
+// origin: [
+// 'http://localhost:3000',
 
-  'http://domainname.lemon.nomoredomains.sbs/',
-  'http://api.domainname.lemon.nomoredomains.sbs/',
-   'https://domainname.lemon.nomoredomains.sbs/',
- 'https://api.domainname.lemon.nomoredomains.sbs/',
- ],
- credentials: true,
- ;
+// 'http://domainname.lemon.nomoredomains.sbs/',
+// 'http://api.domainname.lemon.nomoredomains.sbs/',
+// 'https://domainname.lemon.nomoredomains.sbs/',
+// 'https://api.domainname.lemon.nomoredomains.sbs/',
+// ],
+// credentials: true,
+// ;
 
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
@@ -35,7 +35,7 @@ const allowedCors = [
   'localhost:3000',
 ];
 const app = express();
-app.all('*', cors(options));
+
 app.use((req, res, next) => {
   const { origin } = req.headers; // Сохраняем источник запроса в переменную origin
   const { method } = req; // Сохраняем тип запроса (HTTP-метод) в соответствующую переменную
@@ -45,7 +45,6 @@ app.use((req, res, next) => {
     // устанавливаем заголовок, который разрешает браузеру запросы с этого источника
     res.header('Access-Control-Allow-Origin', allowedCors);
     res.header('Access-Control-Allow-Origin', origin);
-     res.header('Access-Control-Allow-Origin', true);
     res.header('Access-Control-Request-Header', 'https://domainname.lemon.nomoredomains.sbs');
     res.header('Access-Control-Allow-Credentials', true);
   }
@@ -53,9 +52,7 @@ app.use((req, res, next) => {
     // разрешаем кросс-доменные запросы любых типов (по умолчанию)
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
     res.header('Access-Control-Allow-Headers', requestHeaders, origin, X-Requested-With, Content-Type, Accept );
-    res.header('Access-Control-Allow-Headers', requestHeaders);
     res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Origin', allowedCors);
     res.end();
   }
   next();
