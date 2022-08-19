@@ -43,7 +43,6 @@ app.use((req, res, next) => {
   const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS';
   if (allowedCors.includes(origin)) {
     // устанавливаем заголовок, который разрешает браузеру запросы с этого источника
-    res.header('Access-Control-Allow-Origin', allowedCors);
     res.header('Access-Control-Allow-Origin', origin);
      res.header('Access-Control-Allow-Origin', true);
     res.header('Access-Control-Request-Header', 'https://domainname.lemon.nomoredomains.sbs');
