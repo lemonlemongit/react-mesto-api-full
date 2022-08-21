@@ -12,19 +12,17 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const routUsers = require('./routes/users');
 const routcards = require('./routes/cards');
 
-// Слушаем порт
-const { PORT = 3001 } = process.env;
- // const options = {
-// origin: [
-// 'http://localhost:3000',
 
-// 'http://domainname.lemon.nomoredomains.sbs/',
-// 'http://api.domainname.lemon.nomoredomains.sbs/',
-// 'https://domainname.lemon.nomoredomains.sbs/',
-// 'https://api.domainname.lemon.nomoredomains.sbs/',
-// ],
-// credentials: true,
-// ;
+  const options = {
+ origin: [
+ 'http://localhost:3000',
+ 'http://domainname.lemon.nomoredomains.sbs',
+ 'http://api.domainname.lemon.nomoredomains.sbs',
+ 'https://domainname.lemon.nomoredomains.sbs',
+ 'https://api.domainname.lemon.nomoredomains.sbs',
+ ],
+ credentials: true,
+ ;
 
 // Массив доменов, с которых разрешены кросс-доменные запросы
 // const allowedCors = [
@@ -34,6 +32,8 @@ const { PORT = 3001 } = process.env;
 // 'https://api.domainname.lemon.nomoredomains.sbs',
 //  'localhost:3000',
 //];
+// Слушаем порт
+const { PORT = 3001 } = process.env;    
 const app = express();
 
 // app.use((req, res, next) => {
