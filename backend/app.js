@@ -60,7 +60,7 @@ app.use((req, res, next) => {
   next();
 });
 
- app.all('*', cors(allowedCors));
+ // app.all('*', cors(allowedCors));
 // app.all('*', cors(options));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
