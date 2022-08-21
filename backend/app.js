@@ -46,7 +46,7 @@ app.use((req, res, next) => {
    // res.header('Access-Control-Allow-Origin', allowedCors);
     res.header('Access-Control-Allow-Origin', origin);
    // res.header('Access-Control-Request-Header', 'https://domainname.lemon.nomoredomains.sbs');
-   res.header('Access-Control-Allow-Credentials', true);
+   // res.header('Access-Control-Allow-Credentials', true);
   }
   if (method === 'OPTIONS') {
     // разрешаем кросс-доменные запросы любых типов (по умолчанию)
