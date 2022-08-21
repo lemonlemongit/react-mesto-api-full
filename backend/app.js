@@ -43,18 +43,18 @@ app.use((req, res, next) => {
   const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS';
   if (allowedCors.includes(origin)) {
     // устанавливаем заголовок, который разрешает браузеру запросы с этого источника
-    res.header('Access-Control-Allow-Origin', allowedCors);
+   // res.header('Access-Control-Allow-Origin', allowedCors);
     res.header('Access-Control-Allow-Origin', origin);
-    res.header('Access-Control-Request-Header', 'https://domainname.lemon.nomoredomains.sbs');
-    res.header('Access-Control-Allow-Credentials', true);
+   // res.header('Access-Control-Request-Header', 'https://domainname.lemon.nomoredomains.sbs');
+  //  res.header('Access-Control-Allow-Credentials', true);
   }
   if (method === 'OPTIONS') {
     // разрешаем кросс-доменные запросы любых типов (по умолчанию)
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
     res.header('Access-Control-Allow-Headers', requestHeaders, origin, X-Requested-With, Content-Type, Accept );
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Origin', allowedCors);
-    res.end();
+   // res.header('Access-Control-Allow-Credentials', true);
+   /// res.header('Access-Control-Allow-Origin', allowedCors);
+   return res.end();
   }
   next();
 });
