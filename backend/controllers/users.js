@@ -87,6 +87,7 @@ module.exports.updateAvatar = (req, res, next) => {
   const { avatar } = req.body;
   // const userId = req.user._id;
   User.findByIdAndUpdate(
+    req.user._id,
    // { _id: userId },
     { avatar },
     { 
