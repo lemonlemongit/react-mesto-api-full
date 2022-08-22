@@ -46,7 +46,7 @@ module.exports.getUserById = (req, res, next) => {
       if (!user) {
         next(new NotFound('Такого пользователя нет'));
       } else {
-        res.send({ data: user });
+        res.send(user);
       }
     })
     .catch((error) => {
