@@ -85,17 +85,21 @@ module.exports.updateUser = (req, res, next) => {
 // обновляет аватар пользователя
 module.exports.updateAvatar = (req, res, next) => {
   const { avatar } = req.body;
-  const userId = req.user._id;
+  // const userId = req.user._id;
   User.findByIdAndUpdate(
-    { _id: userId },
+   // { _id: userId },
     { avatar },
-    { new: true, runValidators: true, upsert: false },
+    { 
+      new: true, 
+      runValidators: true,  
+    },
+    // upsert: false
   )
     .then((user) => {
       if (!user) {
         throw new NotFound('Пользователь не найден');
       }
-      res.send({ data: user });
+      res.send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
