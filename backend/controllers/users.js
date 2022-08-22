@@ -61,22 +61,17 @@ module.exports.getUserById = (req, res, next) => {
 // обновляет профиль
 module.exports.updateUser = (req, res, next) => {
   const { name, about } = req.body;
-  // const userId = req.user._id;
+  const userId = req.user._id;
   User.findByIdAndUpdate(
-   // { _id: userId },
-    req.user._id,
+    { _id: userId },
     { name, about },
-    { 
-      new: true, 
-      runValidators: true, 
-      upsert: false,
-    },
+    { new: true, runValidators: true, upsert: false },
   )
     .then((user) => {
       if (!user) {
         throw new NotFound('Пользователь не найден');
       }
-      res.send(user);
+      res.send({ data: user });
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
