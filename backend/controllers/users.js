@@ -95,11 +95,7 @@ module.exports.updateAvatar = (req, res, next) => {
     req.user._id,
    // { _id: userId },
     { avatar },
-    { 
-      new: true, 
-      runValidators: true,  
-    },
-    // upsert: false
+    {  new: true,  runValidators: true,  upsert: false },
   )
     .then((user) => {
       if (!user) {
