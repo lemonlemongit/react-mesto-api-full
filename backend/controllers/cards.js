@@ -14,7 +14,7 @@ module.exports.createCard = (req, res, next) => {
     owner,
   })
     // вернём записанные в базу данные
-    .then((card) => res.send({ data: card }))
+    .then((card) => res.send( card ))
     // данные не записались, вернём ошибку
     .catch((err) => {
       if (err.name === 'ValidationError') {
