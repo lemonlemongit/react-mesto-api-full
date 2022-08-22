@@ -107,6 +107,7 @@ app.post(
 // роуты, требующие авторизации
 // app.use(auth);
 app.use('/users', routUsers);
+app.use(auth);
 app.use('/cards', routcards);
 app.use(errorLogger);
 app.use(errors());
