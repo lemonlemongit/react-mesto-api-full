@@ -14,7 +14,7 @@ module.exports.createCard = (req, res, next) => {
     owner,
   })
     // вернём записанные в базу данные
-    .then((card) => res.send({ data: card }))
+    .then((card) => res.send( card ))
     // данные не записались, вернём ошибку
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -28,7 +28,7 @@ module.exports.createCard = (req, res, next) => {
 // возвращает все карточки
 module.exports.getCards = (req, res, next) => {
   Card.find({})
-    .then((cards) => res.status(200).send({ data: cards }))
+    .then((cards) => res.status(200).send(cards))
     .catch((next));
 };
 
@@ -59,7 +59,7 @@ module.exports.likeCard = (req, res, next) => {
       if (!card) {
         throw new NotFound('Карточка не найдена');
       }
-      res.send({ data: card });
+      res.send( card );
     })
     .catch(next);
 };
@@ -75,7 +75,7 @@ module.exports.dislikeCard = (req, res, next) => {
       if (!card) {
         throw new NotFound('Карточка не найдена');
       }
-      res.send({ data: card });
+      res.send( card );
     })
     .catch(next);
 };

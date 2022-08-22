@@ -46,7 +46,7 @@ module.exports.getUserById = (req, res, next) => {
       if (!user) {
         next(new NotFound('Такого пользователя нет'));
       } else {
-        res.send({ data: user });
+        res.send(user);
       }
     })
     .catch((error) => {
@@ -63,7 +63,8 @@ module.exports.updateUser = (req, res, next) => {
   const { name, about } = req.body;
   const userId = req.user._id;
   User.findByIdAndUpdate(
-    { _id: userId },
+   // { _id: userId },
+    req.user._id,
     { name, about },
     { new: true, runValidators: true, upsert: false },
   )
@@ -71,7 +72,7 @@ module.exports.updateUser = (req, res, next) => {
       if (!user) {
         throw new NotFound('Пользователь не найден');
       }
-      res.send({ data: user });
+      res.send( user );
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -85,17 +86,18 @@ module.exports.updateUser = (req, res, next) => {
 // обновляет аватар пользователя
 module.exports.updateAvatar = (req, res, next) => {
   const { avatar } = req.body;
-  const userId = req.user._id;
+  // const userId = req.user._id;
   User.findByIdAndUpdate(
-    { _id: userId },
+    req.user._id,
+   // { _id: userId },
     { avatar },
-    { new: true, runValidators: true, upsert: false },
+    {  new: true,  runValidators: true,  upsert: false },
   )
     .then((user) => {
       if (!user) {
         throw new NotFound('Пользователь не найден');
       }
-      res.send({ data: user });
+      res.send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -121,7 +123,7 @@ module.exports.login = (req, res, next) => {
 
 // получение информации о пользователе
 module.exports.getUserInfo = (req, res, next) => {
-  User.findById(req.user._id)
+   User.findById(req.user._id)
     .then((user) => res.send(
       {
         name: user.name,

@@ -16,6 +16,7 @@ class ApiAuthorize {
     return fetch(`${this._baseUrl}/signin`, {
       method: "POST",
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify({
         password: password,
         email: email,
@@ -27,6 +28,7 @@ class ApiAuthorize {
     return fetch(`${this._baseUrl}/signup`, {
       method: "POST",
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify({
         password: password,
         email: email,
@@ -41,13 +43,20 @@ class ApiAuthorize {
         "Content-Type": "application/json",
         Authorization: `Bearer ${jwt}`,
       },
+      credentials: 'include',
     }).then((res) => this._checkRes(res));
   }
 }
 
 export const apiAuthorize = new ApiAuthorize({
-  baseUrl: "https://auth.nomoreparties.co",
+  baseUrl: "https://api.domainname.lemon.nomoredomains.sbs",
   headers: {
     "Content-Type": "application/json",
+    'Accept': 'application/json',
+    "Access-Control-Allow-Methods":"GET,HEAD,PUT,POST,PATCH,DELETE",
+    "Access-Control-Allow-Credentials" : true,
+    "Access-Control-Allow-Headers" : "Origin, X-Requested-With, Content-Type, Accept",
   },
+  credentials: 'include',
 });
+ 

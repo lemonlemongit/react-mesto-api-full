@@ -57,17 +57,19 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
     api
       .changeLikeCardStatus(card._id, isLiked)
+      
       .then((newCard) => {
         setCards((state) =>
           state.map((c) => (c._id === card._id ? newCard : c))
+        
         );
       })
       .catch((res) => console.log(res));
   }
-
+  
   function handleCardDelete(card) {
     api
       .deleteCard(card._id)
@@ -100,7 +102,7 @@ function App() {
 
   function handleAddPlaceSubmit(data) {
     api
-      .addCard(data.name, data.link)
+      .addCard(data)
       .then((newCard) => {
         setCards([newCard, ...cards]);
         closeAllPopups();
@@ -109,24 +111,24 @@ function App() {
   }
 
   React.useEffect(() => {
-    if (loggedIn) {
+      if (loggedIn) {
       api
         .getProfile()
         .then((res) => {
           setCurrentUser(res);
         })
-        .catch((res) => console.log(res));
+        .catch((err) => console.log(err));
 
       api
         .getInitialCards()
         .then((res) => {
           setCards(res);
         })
-        .catch((res) => console.log(res));
-    }
-    handleTokenCheck();
+        .catch((err) => console.log(err));
+      }
+        handleTokenCheck();
   }, [loggedIn]);
-
+ 
   function handleTokenCheck() {
     if (localStorage.getItem("jwt")) {
       const jwt = localStorage.getItem("jwt");
@@ -137,7 +139,8 @@ function App() {
             if (data) {
               setLoggedIn(true);
               history.push("/");
-              setUserEmail(data.data.email);
+              setUserEmail(data.email);
+              setCurrentUser(data);
             }
           })
           .catch((res) => console.log(res));

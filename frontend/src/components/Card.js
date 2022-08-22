@@ -5,13 +5,13 @@ function Card(props) {
   const currentUser = React.useContext(CurrentUserContext);
 
   // Определяем пользователя и опред.должна ли появляться кнопка удаления карточки
-  const isOwn = props.card.owner._id === currentUser._id;
+  const isOwn = props.card.owner === currentUser._id;
   const cardDeleteButtonClassName = ` ${
     isOwn ? "element__delete" : "element__delete_disabled"
   }`;
 
   // Определяем, есть ли у карточки лайк, поставленный текущим пользователем
-  const isLiked = props.card.likes.some((i) => i._id === currentUser._id);
+   const isLiked = props.card.likes.some((i) => i === currentUser._id);
   // Создаём переменную, которую после зададим в `className` для кнопки лайка
   const cardLikeButtonClassName = `element__like ${
     isLiked ? "element__like_active" : "element__like"

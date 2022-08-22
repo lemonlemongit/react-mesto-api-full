@@ -3,18 +3,23 @@ class Api {
     this._baseUrl = baseUrl;
     this._headers = headers;
   }
-
+  _headersJwt() {
+    return {authorization: `Bearer ${localStorage.getItem('jwt')}`, ...this.headers}
+  }
   // получаем профиль
   getProfile() {
     return fetch(`${this._baseUrl}/users/me`, {
-      headers: this._headers,
+      headers: this._headersJwt(),
     }).then((res) => this._checkRes(res));
   }
 
   /// получаем карточки
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
-      headers: this._headers,
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      },
     }).then((res) => this._checkRes(res));
   }
 
@@ -22,7 +27,10 @@ class Api {
   editProfile(info) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      },
       body: JSON.stringify({
         name: info.name,
         about: info.about,
@@ -31,13 +39,16 @@ class Api {
   }
 
   //// добавление карточки
-  addCard(name, link) {
+  addCard(data) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
-      headers: this._headers,
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      },
       body: JSON.stringify({
-        name,
-        link,
+        name: data.name,
+        link: data.link,
       }),
     }).then((res) => this._checkRes(res));
   }
@@ -46,7 +57,10 @@ class Api {
   deleteCard(id) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      },
     }).then((res) => this._checkRes(res));
   }
 
@@ -54,7 +68,10 @@ class Api {
   deleteLike(id) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      },
     }).then((res) => this._checkRes(res));
   }
 
@@ -62,7 +79,10 @@ class Api {
   addLike(id) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: "PUT",
-      headers: this._headers,
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      },
     }).then((res) => this._checkRes(res));
   }
 
@@ -70,7 +90,10 @@ class Api {
   setAvatar(url) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      },
       body: JSON.stringify({
         avatar: url.avatar,
       }),
@@ -93,9 +116,12 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-40",
+ baseUrl: "https://api.domainname.lemon.nomoredomains.sbs",
   headers: {
-    authorization: "84100497-63df-4058-816a-2b7aa5f5e9d4",
     "Content-Type": "application/json",
+    'Accept': 'application/json',
+    // "Access-Control-Allow-Methods":"GET,HEAD,PUT,POST,PATCH,DELETE",
+   //  "Access-Control-Allow-Credentials" : true,
   },
+ // credentials: 'include',
 });
