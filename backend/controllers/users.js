@@ -127,12 +127,15 @@ module.exports.login = (req, res, next) => {
 
 // получение информации о пользователе
 module.exports.getUserInfo = (req, res, next) => {
-  User.findById(req.user._id)
-    .then((user) => {
-      if (!user) {
-        throw new NotFound('Пользователь не найден');
-      }
-      res.send(user);
-    })
-    .catch(next);
+   User.findById(req.user._id)
+    .then((user) => res.send(
+      {
+        name: user.name,
+        about: user.about,
+        avatar: user.avatar,
+        email: user.email,
+        _id: user._id,
+      },
+    ))
+    .catch((err) => next(err));
 };
