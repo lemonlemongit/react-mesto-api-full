@@ -63,7 +63,8 @@ module.exports.updateUser = (req, res, next) => {
   const { name, about } = req.body;
   const userId = req.user._id;
   User.findByIdAndUpdate(
-    { _id: userId },
+   // { _id: userId },
+    req.user._id,
     { name, about },
     { new: true, runValidators: true, upsert: false },
   )
@@ -71,7 +72,7 @@ module.exports.updateUser = (req, res, next) => {
       if (!user) {
         throw new NotFound('Пользователь не найден');
       }
-      res.send({ data: user });
+      res.send( user );
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
