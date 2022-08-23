@@ -125,9 +125,10 @@ function App() {
           setCards(res);
         })
         .catch((err) => console.log(err));
-      
+       
        }
-        
+       handleTokenCheck();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loggedIn]);
  
   function handleTokenCheck() {
