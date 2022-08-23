@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { errors, celebrate, Joi } = require('celebrate');
 const helmet = require('helmet');
- const cors = require('cors');
+const cors = require('cors');
 const { regexp } = require('./regexp/regexp');
 const { login, createUser } = require('./controllers/users');
 const auth = require('./middlewares/auth');
@@ -15,17 +15,6 @@ const routcards = require('./routes/cards');
 
 // Слушаем порт
 const { PORT = 3000 } = process.env;
- // const options = {
-// origin: [
-// 'http://localhost:3000',
-
-// 'http://domainname.lemon.nomoredomains.sbs/',
-// 'http://api.domainname.lemon.nomoredomains.sbs/',
-// 'https://domainname.lemon.nomoredomains.sbs/',
-// 'https://api.domainname.lemon.nomoredomains.sbs/',
-// ],
-// credentials: true,
-// ;
 
 // Массив доменов, с которых разрешены кросс-доменные запросы
 
@@ -44,8 +33,6 @@ app.use(
   }),
 );
 
- // app.all('*', cors(allowedCors));
-// app.all('*', cors(options));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

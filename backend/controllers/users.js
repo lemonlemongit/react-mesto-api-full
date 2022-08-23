@@ -61,9 +61,9 @@ module.exports.getUserById = (req, res, next) => {
 // обновляет профиль
 module.exports.updateUser = (req, res, next) => {
   const { name, about } = req.body;
-  const userId = req.user._id;
+  // const userId = req.user._id;
   User.findByIdAndUpdate(
-   // { _id: userId },
+  // { _id: userId },
     req.user._id,
     { name, about },
     { new: true, runValidators: true, upsert: false },
@@ -72,7 +72,7 @@ module.exports.updateUser = (req, res, next) => {
       if (!user) {
         throw new NotFound('Пользователь не найден');
       }
-      res.send( user );
+      res.send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -89,9 +89,9 @@ module.exports.updateAvatar = (req, res, next) => {
   // const userId = req.user._id;
   User.findByIdAndUpdate(
     req.user._id,
-   // { _id: userId },
+    // { _id: userId },
     { avatar },
-    {  new: true,  runValidators: true,  upsert: false },
+    { new: true, runValidators: true, upsert: false },
   )
     .then((user) => {
       if (!user) {
@@ -123,7 +123,7 @@ module.exports.login = (req, res, next) => {
 
 // получение информации о пользователе
 module.exports.getUserInfo = (req, res, next) => {
-   User.findById(req.user._id)
+  User.findById(req.user._id)
     .then((user) => res.send(
       {
         name: user.name,

@@ -8,7 +8,7 @@ import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { api } from "../utils/Api";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import Login from "./Login";
@@ -110,8 +110,8 @@ function App() {
       .catch((res) => console.log(res));
   }
 
-  React.useEffect(() => {
-      if (loggedIn) {
+  useEffect(() => {
+       if (loggedIn) {
       api
         .getProfile()
         .then((res) => {
@@ -125,8 +125,9 @@ function App() {
           setCards(res);
         })
         .catch((err) => console.log(err));
-      }
-        handleTokenCheck();
+      
+       }
+        
   }, [loggedIn]);
  
   function handleTokenCheck() {
